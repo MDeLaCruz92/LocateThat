@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		824AF71C1E33157300BCB925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF71B1E33157300BCB925 /* AppDelegate.swift */; };
-		824AF71E1E33157300BCB925 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF71D1E33157300BCB925 /* ViewController.swift */; };
+		824AF71E1E33157300BCB925 /* LocateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF71D1E33157300BCB925 /* LocateVC.swift */; };
 		824AF7211E33157300BCB925 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824AF71F1E33157300BCB925 /* Main.storyboard */; };
 		824AF7241E33157300BCB925 /* LocateThat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7221E33157300BCB925 /* LocateThat.xcdatamodeld */; };
 		824AF7261E33157300BCB925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 824AF7251E33157300BCB925 /* Assets.xcassets */; };
 		824AF7291E33157300BCB925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824AF7271E33157300BCB925 /* LaunchScreen.storyboard */; };
 		824AF7341E33157300BCB925 /* LocateThatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7331E33157300BCB925 /* LocateThatTests.swift */; };
 		824AF73F1E33157300BCB925 /* LocateThatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF73E1E33157300BCB925 /* LocateThatUITests.swift */; };
+		824AF7551E33248400BCB925 /* LocateVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7541E33248400BCB925 /* LocateVC+Ext.swift */; };
+		824AF7571E334B6400BCB925 /* LocateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7561E334B6400BCB925 /* LocateResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,7 @@
 /* Begin PBXFileReference section */
 		824AF7181E33157300BCB925 /* LocateThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocateThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824AF71B1E33157300BCB925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		824AF71D1E33157300BCB925 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		824AF71D1E33157300BCB925 /* LocateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateVC.swift; sourceTree = "<group>"; };
 		824AF7201E33157300BCB925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		824AF7231E33157300BCB925 /* LocateThat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocateThat.xcdatamodel; sourceTree = "<group>"; };
 		824AF7251E33157300BCB925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		824AF73A1E33157300BCB925 /* LocateThatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocateThatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		824AF73E1E33157300BCB925 /* LocateThatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateThatUITests.swift; sourceTree = "<group>"; };
 		824AF7401E33157300BCB925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		824AF7541E33248400BCB925 /* LocateVC+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocateVC+Ext.swift"; sourceTree = "<group>"; };
+		824AF7561E334B6400BCB925 /* LocateResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocateResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +103,12 @@
 		824AF71A1E33157300BCB925 /* LocateThat */ = {
 			isa = PBXGroup;
 			children = (
-				824AF71B1E33157300BCB925 /* AppDelegate.swift */,
-				824AF71D1E33157300BCB925 /* ViewController.swift */,
-				824AF71F1E33157300BCB925 /* Main.storyboard */,
-				824AF7251E33157300BCB925 /* Assets.xcassets */,
-				824AF7271E33157300BCB925 /* LaunchScreen.storyboard */,
-				824AF72A1E33157300BCB925 /* Info.plist */,
-				824AF7221E33157300BCB925 /* LocateThat.xcdatamodeld */,
+				824AF74E1E33163500BCB925 /* Model */,
+				824AF74D1E33163000BCB925 /* View */,
+				824AF74C1E33162A00BCB925 /* Controller */,
+				824AF7531E33242500BCB925 /* Extension */,
+				824AF74F1E33163B00BCB925 /* Util */,
+				824AF7501E33164200BCB925 /* Resources */,
 			);
 			path = LocateThat;
 			sourceTree = "<group>";
@@ -126,6 +129,73 @@
 				824AF7401E33157300BCB925 /* Info.plist */,
 			);
 			path = LocateThatUITests;
+			sourceTree = "<group>";
+		};
+		824AF74C1E33162A00BCB925 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				824AF71D1E33157300BCB925 /* LocateVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		824AF74D1E33163000BCB925 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				824AF7511E33164B00BCB925 /* Storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		824AF74E1E33163500BCB925 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				824AF7561E334B6400BCB925 /* LocateResult.swift */,
+				824AF7521E33168700BCB925 /* CoreData */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		824AF74F1E33163B00BCB925 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		824AF7501E33164200BCB925 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				824AF71B1E33157300BCB925 /* AppDelegate.swift */,
+				824AF7251E33157300BCB925 /* Assets.xcassets */,
+				824AF72A1E33157300BCB925 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		824AF7511E33164B00BCB925 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				824AF71F1E33157300BCB925 /* Main.storyboard */,
+				824AF7271E33157300BCB925 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		824AF7521E33168700BCB925 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				824AF7221E33157300BCB925 /* LocateThat.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		824AF7531E33242500BCB925 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				824AF7541E33248400BCB925 /* LocateVC+Ext.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +335,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				824AF7571E334B6400BCB925 /* LocateResult.swift in Sources */,
 				824AF7241E33157300BCB925 /* LocateThat.xcdatamodeld in Sources */,
-				824AF71E1E33157300BCB925 /* ViewController.swift in Sources */,
+				824AF71E1E33157300BCB925 /* LocateVC.swift in Sources */,
+				824AF7551E33248400BCB925 /* LocateVC+Ext.swift in Sources */,
 				824AF71C1E33157300BCB925 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
