@@ -43,19 +43,19 @@ extension LocateVC: UITableViewDataSource {
 
 extension LocateVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cellIdentifier = "LocateResultCell"
-    
-    var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
     
     if locateResults.count == 0 {
-      cell.textLabel!.text = "(Nothing found)"
-      cell.detailTextLabel!.text = ""
+      return tableView.dequeueReusableCell(withIdentifier:
+        TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
     } else {
+      let cell = tableView.dequeueReusableCell(withIdentifier:
+        TableViewCellIdentifiers.locateResultCell, for: indexPath) as! LocateResultCell
+      
       let locateResult = locateResults[indexPath.row]
-      cell.textLabel!.text = locateResult.name
-      cell.detailTextLabel!.text = locateResult.artistName
+      cell.nameLabel.text = locateResult.name
+      cell.artistNameLabel.text = locateResult.artistName
+      return cell
     }
-    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
