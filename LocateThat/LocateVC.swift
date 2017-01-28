@@ -14,10 +14,13 @@ class LocateVC: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   var locateResults: [LocateResult] = []
-  var hasSearched = false
-
+  var hasLocated = false
+  var isLoading = false
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    searchBar.becomeFirstResponder()
     tableView.rowHeight = 80
     tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
     
@@ -26,15 +29,188 @@ class LocateVC: UIViewController {
     
     cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
     tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
+    
+    cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
+    tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
   }
   
   struct TableViewCellIdentifiers {
     static let locateResultCell = "LocateResultCell"
     static let nothingFoundCell = "NothingFoundCell"
+    static let loadingCell = "LoadingCell"
   }
   
-
+  func iTunesURL(locateText: String) -> URL {
+    let escapedLocateText = locateText.addingPercentEncoding(
+      withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+    let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedLocateText)
+    let url = URL(string: urlString)
+    return url!
+  }
   
-
+  func performStoreRequest(with url: URL) -> String? {
+    do {
+      return try String(contentsOf: url, encoding: .utf8)
+    } catch {
+      print("Download Error: \(error)")
+      return nil
+    }
+  }
+  
+  // MARK: Parse Functions
+  
+  func parse(json: String) -> [String: Any]? {
+    guard let data = json.data(using: .utf8, allowLossyConversion: false)
+      else { return nil }
+    
+    do {
+      return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+    } catch {
+      print("JSON Error: \(error)")
+      return nil
+    }
+  }
+  
+  func parse(dictionary: [String: Any]) -> [LocateResult] {
+    guard let array = dictionary["results"] as? [Any] else {
+      print("Expected 'results' array")
+      return []
+    }
+    
+    var locateResults: [LocateResult] = []
+    
+    for resultDict in array {
+      if let resultDict = resultDict as? [String: Any] {
+        
+        var locateResult: LocateResult?
+        
+        if let wrapperType = resultDict["wrapperType"] as? String {
+          switch wrapperType {
+          case "track":
+            locateResult = parse(track: resultDict)
+          case "audiobook":
+            locateResult = parse(audiobook: resultDict)
+          case "software":
+            locateResult = parse(software: resultDict)
+          default:
+            break
+          }
+        } else if let kind = resultDict["kind"] as? String, kind == "ebook" {
+          locateResult = parse(ebook: resultDict)
+        }
+        if let result = locateResult {
+          locateResults.append(result)
+        }
+      }
+    }
+    return locateResults
+  }
+  
+  func parse(track dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    
+    locateResult.name = dictionary["trackName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["trackViewUrl"] as! String
+    locateResult.kind = dictionary["kind"] as! String
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["trackPrice"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  
+  func parse(audiobook dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    locateResult.name = dictionary["collectionName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["collectionViewUrl"] as! String
+    locateResult.kind = "audiobook"
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["collectionPrice"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  
+  func parse(software dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    locateResult.name = dictionary["trackName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["trackViewUrl"] as! String
+    locateResult.kind = dictionary["kind"] as! String
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["price"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  
+  func parse(ebook dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    locateResult.name = dictionary["trackName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["trackViewUrl"] as! String
+    locateResult.kind = dictionary["kind"] as! String
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["price"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["genres"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  
+  func kindForDisplay(_ kind: String) -> String {
+    switch kind {
+    case "album": return "Album"
+    case "audiobook": return "Audio Book"
+    case "book": return "Book"
+    case "ebook": return "E-Book"
+    case "feature-move": return "Movie"
+    case "music-video": return "Music Video"
+    case "podcast": return "Podcast"
+    case "software": return "App"
+    case "tv-episode": return "TV Episode"
+    default: return kind
+    }
+  }
+  
+  // MARK: NetworkError
+  
+  func showNetworkError() {
+    let alert = UIAlertController(
+      title: "Whoops...",
+      message: "There was an error reading from the iTunes Store. Please try again.",
+      preferredStyle: .alert)
+    
+    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alert.addAction(action)
+    
+    present(alert, animated: true, completion: nil)
+  }
+  
 }
 

@@ -10,20 +10,37 @@ import UIKit
 
 extension LocateVC: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    locateResults = []
-    
-    
-    if searchBar.text! != "justin bieber" {
-      for i in 0...2 {
-        let locateResult = LocateResult()
-        locateResult.name = String(format: "Fake Result %d for", i)
-        locateResult.artistName = searchBar.text!
-        locateResults.append(locateResult)
-      }
+    if !searchBar.text!.isEmpty {
+      searchBar.resignFirstResponder()
       
-      hasSearched = true
+      isLoading = true
       tableView.reloadData()
+      
+      hasLocated = true
+      locateResults = []
+      
+      let queue = DispatchQueue.global()
+      
+      queue.async {
+        let url = self.iTunesURL(locateText: searchBar.text!)
+        
+        if let jsonString = self.performStoreRequest(with: url),
+          let jsonDictionary = self.parse(json: jsonString) {
+          
+          self.locateResults = self.parse(dictionary: jsonDictionary)
+          self.locateResults.sort(by: <)
+          
+          DispatchQueue.main.async {
+            self.isLoading = false
+            self.tableView.reloadData()
+          }
+          return
+        }
+        
+        DispatchQueue.main.async {
+          self.showNetworkError()
+        }
+      }
     }
   }
   func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -33,7 +50,11 @@ extension LocateVC: UISearchBarDelegate {
 
 extension LocateVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if locateResults.count == 0 {
+    if isLoading {
+      return 1
+    } else if !hasLocated {
+      return 0
+    } else if locateResults.count == 0 {
       return 1
     } else {
       return locateResults.count
@@ -43,8 +64,14 @@ extension LocateVC: UITableViewDataSource {
 
 extension LocateVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    if locateResults.count == 0 {
+    if isLoading {
+      let cell = tableView.dequeueReusableCell(withIdentifier:
+        TableViewCellIdentifiers.loadingCell, for: indexPath)
+      
+      let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+      spinner.startAnimating()
+      return cell
+    } else if locateResults.count == 0 {
       return tableView.dequeueReusableCell(withIdentifier:
         TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
     } else {
@@ -53,7 +80,13 @@ extension LocateVC: UITableViewDelegate {
       
       let locateResult = locateResults[indexPath.row]
       cell.nameLabel.text = locateResult.name
-      cell.artistNameLabel.text = locateResult.artistName
+      
+      if locateResult.artistName.isEmpty {
+        cell.artistNameLabel.text = "Unknown"
+      } else {
+        cell.artistNameLabel.text = String(format: "%@ (%@)",
+                                           locateResult.artistName, kindForDisplay(locateResult.kind))
+      }
       return cell
     }
   }
@@ -63,10 +96,12 @@ extension LocateVC: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    if locateResults.count == 0 {
+    if locateResults.count == 0 || isLoading {
       return nil
     } else {
       return indexPath
     }
   }
+  
+  
 }
