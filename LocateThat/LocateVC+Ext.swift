@@ -86,14 +86,7 @@ extension LocateVC: UITableViewDelegate {
         TableViewCellIdentifiers.locateResultCell, for: indexPath) as! LocateResultCell
       
       let locateResult = locateResults[indexPath.row]
-      cell.nameLabel.text = locateResult.name
-      
-      if locateResult.artistName.isEmpty {
-        cell.artistNameLabel.text = "Unknown"
-      } else {
-        cell.artistNameLabel.text = String(format: "%@ (%@)",
-                                           locateResult.artistName, kindForDisplay(locateResult.kind))
-      }
+      cell.configure(for: locateResult)
       return cell
     }
   }

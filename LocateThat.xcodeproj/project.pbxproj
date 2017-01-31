@@ -21,6 +21,7 @@
 		82FBBDAB1E386FA900A3F750 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FBBDAA1E386FA900A3F750 /* NothingFoundCell.xib */; };
 		82FBBDAD1E39BEE300A3F750 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 82FBBDAC1E39BEE300A3F750 /* data.json */; };
 		82FBBDAF1E3D1AAD00A3F750 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FBBDAE1E3D1AAD00A3F750 /* LoadingCell.xib */; };
+		82FBBDB31E40F2A900A3F750 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FBBDB21E40F2A900A3F750 /* UIImageView+DownloadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		82FBBDAA1E386FA900A3F750 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		82FBBDAC1E39BEE300A3F750 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		82FBBDAE1E3D1AAD00A3F750 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		82FBBDB21E40F2A900A3F750 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				824AF7541E33248400BCB925 /* LocateVC+Ext.swift */,
+				82FBBDB21E40F2A900A3F750 /* UIImageView+DownloadImage.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82FBBDB31E40F2A900A3F750 /* UIImageView+DownloadImage.swift in Sources */,
 				824AF7571E334B6400BCB925 /* LocateResult.swift in Sources */,
 				824AF7241E33157300BCB925 /* LocateThat.xcdatamodeld in Sources */,
 				824AF75B1E372F8700BCB925 /* LocateResultCell.swift in Sources */,
