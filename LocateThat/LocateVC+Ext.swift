@@ -19,28 +19,34 @@ extension LocateVC: UISearchBarDelegate {
       hasLocated = true
       locateResults = []
       
-      let queue = DispatchQueue.global()
-      
-      queue.async {
-        let url = self.iTunesURL(locateText: searchBar.text!)
-        
-        if let jsonString = self.performStoreRequest(with: url),
-          let jsonDictionary = self.parse(json: jsonString) {
-          
-          self.locateResults = self.parse(dictionary: jsonDictionary)
-          self.locateResults.sort(by: <)
-          
-          DispatchQueue.main.async {
-            self.isLoading = false
-            self.tableView.reloadData()
+      let url = iTunesURL(locateText: searchBar.text!)
+      let session = URLSession.shared
+      let dataTask = session.dataTask(with: url, completionHandler: { data, response, error in
+        if let error = error {
+          print("***Failure! \(error)")
+        } else if let httpResponse = response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 {
+          if let data = data, let jsonDictionary = self.parse(json: data) {
+            self.locateResults = self.parse(dictionary: jsonDictionary)
+            self.locateResults.sort(by: <)
+            
+            DispatchQueue.main.async {
+              self.isLoading = false
+              self.tableView.reloadData()
+            }
+            return
           }
-          return
+        } else {
+          print("***Failure! \(response)")
         }
-        
         DispatchQueue.main.async {
+          self.hasLocated = false
+          self.isLoading = false
+          self.tableView.reloadData()
           self.showNetworkError()
         }
-      }
+      })
+      dataTask.resume()
     }
   }
   func position(for bar: UIBarPositioning) -> UIBarPosition {
