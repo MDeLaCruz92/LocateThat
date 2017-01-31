@@ -9,7 +9,7 @@
 import UIKit
 
 extension LocateVC: UISearchBarDelegate {
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+  func performSearch() {
     if !searchBar.text!.isEmpty {
       searchBar.resignFirstResponder()
       
@@ -20,7 +20,7 @@ extension LocateVC: UISearchBarDelegate {
       hasLocated = true
       locateResults = []
       
-      let url = iTunesURL(locateText: searchBar.text!)
+      let url = self.iTunesURL(locateText: searchBar.text!, category: segmentedControl.selectedSegmentIndex)
       let session = URLSession.shared
       dataTask = session.dataTask(with: url, completionHandler: { data, response, error in
         if let error = error as? NSError, error.code == -999 {

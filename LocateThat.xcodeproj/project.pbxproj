@@ -12,7 +12,6 @@
 		824AF7211E33157300BCB925 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824AF71F1E33157300BCB925 /* Main.storyboard */; };
 		824AF7241E33157300BCB925 /* LocateThat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7221E33157300BCB925 /* LocateThat.xcdatamodeld */; };
 		824AF7261E33157300BCB925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 824AF7251E33157300BCB925 /* Assets.xcassets */; };
-		824AF7291E33157300BCB925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824AF7271E33157300BCB925 /* LaunchScreen.storyboard */; };
 		824AF7341E33157300BCB925 /* LocateThatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7331E33157300BCB925 /* LocateThatTests.swift */; };
 		824AF73F1E33157300BCB925 /* LocateThatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF73E1E33157300BCB925 /* LocateThatUITests.swift */; };
 		824AF7551E33248400BCB925 /* LocateVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7541E33248400BCB925 /* LocateVC+Ext.swift */; };
@@ -48,7 +47,6 @@
 		824AF7201E33157300BCB925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		824AF7231E33157300BCB925 /* LocateThat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocateThat.xcdatamodel; sourceTree = "<group>"; };
 		824AF7251E33157300BCB925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		824AF7281E33157300BCB925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		824AF72A1E33157300BCB925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824AF72F1E33157300BCB925 /* LocateThatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocateThatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		824AF7331E33157300BCB925 /* LocateThatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateThatTests.swift; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				824AF71F1E33157300BCB925 /* Main.storyboard */,
-				824AF7271E33157300BCB925 /* LaunchScreen.storyboard */,
 				824AF7581E37291900BCB925 /* LocateResultCell.xib */,
 				82FBBDAA1E386FA900A3F750 /* NothingFoundCell.xib */,
 				82FBBDAE1E3D1AAD00A3F750 /* LoadingCell.xib */,
@@ -326,7 +323,6 @@
 				82FBBDAF1E3D1AAD00A3F750 /* LoadingCell.xib in Resources */,
 				824AF7591E37291900BCB925 /* LocateResultCell.xib in Resources */,
 				82FBBDAD1E39BEE300A3F750 /* data.json in Resources */,
-				824AF7291E33157300BCB925 /* LaunchScreen.storyboard in Resources */,
 				824AF7261E33157300BCB925 /* Assets.xcassets in Resources */,
 				82FBBDAB1E386FA900A3F750 /* NothingFoundCell.xib in Resources */,
 				824AF7211E33157300BCB925 /* Main.storyboard in Resources */,
@@ -401,14 +397,6 @@
 				824AF7201E33157300BCB925 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		824AF7271E33157300BCB925 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				824AF7281E33157300BCB925 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

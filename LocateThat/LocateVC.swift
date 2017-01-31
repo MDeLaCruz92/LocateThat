@@ -12,6 +12,11 @@ class LocateVC: UIViewController {
   
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var segmentedControl: UISegmentedControl!
+  
+  @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+    performSearch()
+  }
   
   var dataTask: URLSessionDataTask?
   var locateResults: [LocateResult] = []
@@ -24,7 +29,7 @@ class LocateVC: UIViewController {
     super.viewDidLoad()
     searchBar.becomeFirstResponder()
     tableView.rowHeight = 80
-    tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+    tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
     
     var cellNib = UINib(nibName: TableViewCellIdentifiers.locateResultCell, bundle: nil)
     tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.locateResultCell)
@@ -42,12 +47,23 @@ class LocateVC: UIViewController {
     static let loadingCell = "LoadingCell"
   }
   
-  func iTunesURL(locateText: String) -> URL {
+  func iTunesURL(locateText: String, category: Int) -> URL {
+    let entityName: String
+    switch category {
+    case 1: entityName = "musicTrack"
+    case 2: entityName = "software"
+    case 3: entityName = "ebook"
+    default: entityName = ""
+    }
     let escapedLocateText = locateText.addingPercentEncoding(
       withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-    let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedLocateText)
+    let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedLocateText, entityName)
     let url = URL(string: urlString)
     return url!
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    performSearch()
   }
   
   // MARK: Parse Functions
