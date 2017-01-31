@@ -13,9 +13,11 @@ class LocateVC: UIViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var tableView: UITableView!
   
+  var dataTask: URLSessionDataTask?
   var locateResults: [LocateResult] = []
   var hasLocated = false
   var isLoading = false
+  
   
   
   override func viewDidLoad() {
