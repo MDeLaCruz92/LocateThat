@@ -18,6 +18,9 @@
 		824AF7571E334B6400BCB925 /* LocateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF7561E334B6400BCB925 /* LocateResult.swift */; };
 		824AF7591E37291900BCB925 /* LocateResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824AF7581E37291900BCB925 /* LocateResultCell.xib */; };
 		824AF75B1E372F8700BCB925 /* LocateResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF75A1E372F8700BCB925 /* LocateResultCell.swift */; };
+		82F919491E410B80008F1695 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F919481E410B80008F1695 /* DetailVC.swift */; };
+		82F9194B1E4114C6008F1695 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F9194A1E4114C6008F1695 /* DimmingPresentationController.swift */; };
+		82F9194D1E41160A008F1695 /* DetailVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F9194C1E41160A008F1695 /* DetailVC+Ext.swift */; };
 		82FBBDAB1E386FA900A3F750 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FBBDAA1E386FA900A3F750 /* NothingFoundCell.xib */; };
 		82FBBDAD1E39BEE300A3F750 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 82FBBDAC1E39BEE300A3F750 /* data.json */; };
 		82FBBDAF1E3D1AAD00A3F750 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FBBDAE1E3D1AAD00A3F750 /* LoadingCell.xib */; };
@@ -59,6 +62,9 @@
 		824AF7561E334B6400BCB925 /* LocateResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocateResult.swift; sourceTree = "<group>"; };
 		824AF7581E37291900BCB925 /* LocateResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocateResultCell.xib; sourceTree = "<group>"; };
 		824AF75A1E372F8700BCB925 /* LocateResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocateResultCell.swift; sourceTree = "<group>"; };
+		82F919481E410B80008F1695 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		82F9194A1E4114C6008F1695 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		82F9194C1E41160A008F1695 /* DetailVC+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DetailVC+Ext.swift"; sourceTree = "<group>"; };
 		82FBBDAA1E386FA900A3F750 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		82FBBDAC1E39BEE300A3F750 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		82FBBDAE1E3D1AAD00A3F750 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
@@ -145,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				824AF71D1E33157300BCB925 /* LocateVC.swift */,
+				82F919481E410B80008F1695 /* DetailVC.swift */,
+				82F9194A1E4114C6008F1695 /* DimmingPresentationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 			children = (
 				824AF7541E33248400BCB925 /* LocateVC+Ext.swift */,
 				82FBBDB21E40F2A900A3F750 /* UIImageView+DownloadImage.swift */,
+				82F9194C1E41160A008F1695 /* DetailVC+Ext.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -356,10 +365,13 @@
 				82FBBDB31E40F2A900A3F750 /* UIImageView+DownloadImage.swift in Sources */,
 				824AF7571E334B6400BCB925 /* LocateResult.swift in Sources */,
 				824AF7241E33157300BCB925 /* LocateThat.xcdatamodeld in Sources */,
+				82F9194D1E41160A008F1695 /* DetailVC+Ext.swift in Sources */,
 				824AF75B1E372F8700BCB925 /* LocateResultCell.swift in Sources */,
 				824AF71E1E33157300BCB925 /* LocateVC.swift in Sources */,
+				82F919491E410B80008F1695 /* DetailVC.swift in Sources */,
 				824AF7551E33248400BCB925 /* LocateVC+Ext.swift in Sources */,
 				824AF71C1E33157300BCB925 /* AppDelegate.swift in Sources */,
+				82F9194B1E4114C6008F1695 /* DimmingPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

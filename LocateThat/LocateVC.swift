@@ -203,5 +203,16 @@ class LocateVC: UIViewController {
     present(alert, animated: true, completion: nil)
   }
   
+  // MARK: Segue
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "ShowDetail" {
+      let detailVC = segue.destination as! DetailVC
+      let indexPath = sender as! IndexPath
+      let locateResult = locateResults[indexPath.row]
+      detailVC.locateResult = locateResult
+    }
+  }
+  
 }
 
