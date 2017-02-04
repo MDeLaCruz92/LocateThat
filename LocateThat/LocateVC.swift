@@ -23,8 +23,6 @@ class LocateVC: UIViewController {
   var hasLocated = false
   var isLoading = false
   
-  
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     searchBar.becomeFirstResponder()
@@ -215,4 +213,3 @@ class LocateVC: UIViewController {
   }
   
 }
-

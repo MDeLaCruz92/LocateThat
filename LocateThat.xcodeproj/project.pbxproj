@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		824655CF1E4507C4000F8A81 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824655CE1E4507C4000F8A81 /* GradientView.swift */; };
+		824655D11E456E8C000F8A81 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824655D01E456E8C000F8A81 /* BounceAnimationController.swift */; };
+		824655D31E458590000F8A81 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824655D21E458590000F8A81 /* SlideOutAnimationController.swift */; };
 		824AF71C1E33157300BCB925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF71B1E33157300BCB925 /* AppDelegate.swift */; };
 		824AF71E1E33157300BCB925 /* LocateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF71D1E33157300BCB925 /* LocateVC.swift */; };
 		824AF7211E33157300BCB925 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824AF71F1E33157300BCB925 /* Main.storyboard */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		824655CE1E4507C4000F8A81 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		824655D01E456E8C000F8A81 /* BounceAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
+		824655D21E458590000F8A81 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		824AF7181E33157300BCB925 /* LocateThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocateThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824AF71B1E33157300BCB925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		824AF71D1E33157300BCB925 /* LocateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateVC.swift; sourceTree = "<group>"; };
@@ -152,7 +158,6 @@
 			children = (
 				824AF71D1E33157300BCB925 /* LocateVC.swift */,
 				82F919481E410B80008F1695 /* DetailVC.swift */,
-				82F9194A1E4114C6008F1695 /* DimmingPresentationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -161,6 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				824AF75A1E372F8700BCB925 /* LocateResultCell.swift */,
+				824655CE1E4507C4000F8A81 /* GradientView.swift */,
+				824655D01E456E8C000F8A81 /* BounceAnimationController.swift */,
+				82F9194A1E4114C6008F1695 /* DimmingPresentationController.swift */,
+				824655D21E458590000F8A81 /* SlideOutAnimationController.swift */,
 				824AF7511E33164B00BCB925 /* Storyboard/Xib */,
 			);
 			name = View;
@@ -364,13 +373,16 @@
 			files = (
 				82FBBDB31E40F2A900A3F750 /* UIImageView+DownloadImage.swift in Sources */,
 				824AF7571E334B6400BCB925 /* LocateResult.swift in Sources */,
+				824655CF1E4507C4000F8A81 /* GradientView.swift in Sources */,
 				824AF7241E33157300BCB925 /* LocateThat.xcdatamodeld in Sources */,
 				82F9194D1E41160A008F1695 /* DetailVC+Ext.swift in Sources */,
+				824655D31E458590000F8A81 /* SlideOutAnimationController.swift in Sources */,
 				824AF75B1E372F8700BCB925 /* LocateResultCell.swift in Sources */,
 				824AF71E1E33157300BCB925 /* LocateVC.swift in Sources */,
 				82F919491E410B80008F1695 /* DetailVC.swift in Sources */,
 				824AF7551E33248400BCB925 /* LocateVC+Ext.swift in Sources */,
 				824AF71C1E33157300BCB925 /* AppDelegate.swift in Sources */,
+				824655D11E456E8C000F8A81 /* BounceAnimationController.swift in Sources */,
 				82F9194B1E4114C6008F1695 /* DimmingPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
