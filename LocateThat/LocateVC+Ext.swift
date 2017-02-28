@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 extension LocateVC: UISearchBarDelegate {
   func performSearch() {
     if !searchBar.text!.isEmpty {
@@ -50,6 +52,7 @@ extension LocateVC: UISearchBarDelegate {
       dataTask?.resume()    // optional chaining
     }
   }
+  
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
   }
@@ -67,6 +70,8 @@ extension LocateVC: UITableViewDataSource {
       return locateResults.count
     }
   }
+  
+  
 }
 
 extension LocateVC: UITableViewDelegate {
@@ -103,6 +108,5 @@ extension LocateVC: UITableViewDelegate {
       return indexPath
     }
   }
-  
-  
 }
+

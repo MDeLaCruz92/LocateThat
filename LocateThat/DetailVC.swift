@@ -20,8 +20,10 @@ class DetailVC: UIViewController {
   
   var locateResult: LocateResult!
   var downloadTask: URLSessionDownloadTask?
+  var dismissAnimationStyle = AnimationStyle.fade
   
   @IBAction func close() {
+    dismissAnimationStyle = .slide
     dismiss(animated: true, completion: nil)
   }
   
@@ -51,6 +53,11 @@ class DetailVC: UIViewController {
     super.init(coder: aDecoder)
     modalPresentationStyle = .custom
     transitioningDelegate = self
+  }
+  
+  enum AnimationStyle {
+    case slide
+    case fade
   }
   
   func updateUI() {

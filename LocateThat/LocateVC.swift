@@ -14,15 +14,16 @@ class LocateVC: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   
-  @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-    performSearch()
-  }
-  
   var dataTask: URLSessionDataTask?
+  var landscapeVC: LandscapeVC?
   var locateResults: [LocateResult] = []
   var hasLocated = false
   var isLoading = false
   
+  @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+    performSearch()
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     searchBar.becomeFirstResponder()
@@ -39,12 +40,72 @@ class LocateVC: UIViewController {
     tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
   }
   
+  deinit {
+    print("deinit \(self)")
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    performSearch()
+  }
+  
+  // MARK: TableViewCell struct
   struct TableViewCellIdentifiers {
     static let locateResultCell = "LocateResultCell"
     static let nothingFoundCell = "NothingFoundCell"
     static let loadingCell = "LoadingCell"
   }
   
+  // MARK: Landscape Methods
+  override func willTransition(to newCollection: UITraitCollection,
+                               with coordinator: UIViewControllerTransitionCoordinator) {
+    super.willTransition(to: newCollection, with: coordinator)
+    
+    switch newCollection.verticalSizeClass {
+    case .compact:
+      showLandscape(with: coordinator)
+    case .regular, .unspecified:
+      hideLandscape(with: coordinator)
+    }
+  }
+  
+  func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+    guard landscapeVC == nil else { return }
+    landscapeVC = storyboard!.instantiateViewController(withIdentifier: "LandscapeVC") as? LandscapeVC
+    
+    if let controller = landscapeVC {
+      controller.locateResults = locateResults
+      controller.view.frame = view.bounds
+      controller.view.alpha = 0
+      
+      view.addSubview(controller.view)
+      addChildViewController(controller)
+      coordinator.animate(alongsideTransition: { _ in
+        controller.view.alpha = 1
+        self.searchBar.resignFirstResponder()   // hides the keyboard
+        if self.presentedViewController != nil {
+          self.dismiss(animated: true, completion: nil)
+        }
+      }, completion: { _ in
+        controller.didMove(toParentViewController: self)
+      })
+    }
+  }
+  
+  func hideLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+    if let controller = landscapeVC {
+      controller.willMove(toParentViewController: nil)
+      
+      coordinator.animate(alongsideTransition: { _ in
+        controller.view.alpha = 0
+      }, completion: { _ in
+      controller.view.removeFromSuperview()
+      controller.removeFromParentViewController()
+      self.landscapeVC = nil
+      })
+    }
+  }
+  
+  // MARK: Parse Functions
   func iTunesURL(locateText: String, category: Int) -> URL {
     let entityName: String
     switch category {
@@ -59,12 +120,6 @@ class LocateVC: UIViewController {
     let url = URL(string: urlString)
     return url!
   }
-  
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    performSearch()
-  }
-  
-  // MARK: Parse Functions
   
   func parse(json data: Data) -> [String: Any]? {
     do {
@@ -186,9 +241,7 @@ class LocateVC: UIViewController {
     }
     return locateResult
   }
-  
   // MARK: NetworkError
-  
   func showNetworkError() {
     let alert = UIAlertController(
       title: "Whoops...",
@@ -200,9 +253,7 @@ class LocateVC: UIViewController {
     
     present(alert, animated: true, completion: nil)
   }
-  
   // MARK: Segue
-  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "ShowDetail" {
       let detailVC = segue.destination as! DetailVC
@@ -211,5 +262,4 @@ class LocateVC: UIViewController {
       detailVC.locateResult = locateResult
     }
   }
-  
 }
