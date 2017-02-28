@@ -13,7 +13,7 @@ class LandscapeVC: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pageControl: UIPageControl!
   
-  var locateResults = [LocateResult]()
+  var locate: Locate!
   private var firstTime = true
   
   @IBAction func pageChanged(_ sender: UIPageControl) {
@@ -52,7 +52,7 @@ class LandscapeVC: UIViewController {
     
     if firstTime {
       firstTime = false
-      tileButtons(locateResults)
+      tileButtons(locate.locateResults)
     }
   }
   

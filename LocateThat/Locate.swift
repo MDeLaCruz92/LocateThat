@@ -14,4 +14,190 @@ class Locate {
   var isLoading = false
   
   private var dataTask: URLSessionDataTask? = nil
+  
+  typealias LocateComplete = (Bool) -> Void
+  
+  //MARK: Parse Functions
+  private func iTunesURL(locateText: String, category: Int) -> URL {
+    let entityName: String
+    switch category {
+    case 1: entityName = "musicTrack"
+    case 2: entityName = "software"
+    case 3: entityName = "ebook"
+    default: entityName = ""
+    }
+    let escapedLocateText = locateText.addingPercentEncoding(
+      withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+    let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedLocateText, entityName)
+    let url = URL(string: urlString)
+    return url!
+  }
+  
+  private func parse(json data: Data) -> [String: Any]? {
+    do {
+      return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+    } catch {
+      print("JSON Error: \(error)")
+      return nil
+    }
+  }
+  
+  private func parse(dictionary: [String: Any]) -> [LocateResult] {
+    guard let array = dictionary["results"] as? [Any] else {
+      print("Expected 'results' array")
+      return []
+    }
+    
+    var locateResults: [LocateResult] = []
+    
+    for resultDict in array {
+      if let resultDict = resultDict as? [String: Any] {
+        
+        var locateResult: LocateResult?
+        
+        if let wrapperType = resultDict["wrapperType"] as? String {
+          switch wrapperType {
+          case "track":
+            locateResult = parse(track: resultDict)
+          case "audiobook":
+            locateResult = parse(audiobook: resultDict)
+          case "software":
+            locateResult = parse(software: resultDict)
+          default:
+            break
+          }
+        } else if let kind = resultDict["kind"] as? String, kind == "ebook" {
+          locateResult = parse(ebook: resultDict)
+        }
+        if let result = locateResult {
+          locateResults.append(result)
+        }
+      }
+    }
+    return locateResults
+  }
+  
+  private func parse(track dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    
+    locateResult.name = dictionary["trackName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["trackViewUrl"] as! String
+    locateResult.kind = dictionary["kind"] as! String
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["trackPrice"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  
+  private func parse(audiobook dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    locateResult.name = dictionary["collectionName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["collectionViewUrl"] as! String
+    locateResult.kind = "audiobook"
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["collectionPrice"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  
+  private func parse(software dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    locateResult.name = dictionary["trackName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["trackViewUrl"] as! String
+    locateResult.kind = dictionary["kind"] as! String
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["price"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["primaryGenreName"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  
+  private func parse(ebook dictionary: [String: Any]) -> LocateResult {
+    let locateResult = LocateResult()
+    locateResult.name = dictionary["trackName"] as! String
+    locateResult.artistName = dictionary["artistName"] as! String
+    locateResult.artworkSmallURL = dictionary["artworkUrl60"] as! String
+    locateResult.artworkLargeURL = dictionary["artworkUrl100"] as! String
+    locateResult.storeURL = dictionary["trackViewUrl"] as! String
+    locateResult.kind = dictionary["kind"] as! String
+    locateResult.currency = dictionary["currency"] as! String
+    
+    if let price = dictionary["price"] as? Double {
+      locateResult.price = price
+    }
+    if let genre = dictionary["genres"] as? String {
+      locateResult.genre = genre
+    }
+    return locateResult
+  }
+  // MARK: Search method
+  func performSearch(for text: String, category: Int, completion: @escaping LocateComplete) {
+    if !text.isEmpty {
+      dataTask?.cancel()
+      
+      isLoading = true
+      hasLocated = true
+      locateResults = []
+      
+      let url = iTunesURL(locateText: text, category: category)
+      
+      let session = URLSession.shared
+      dataTask = session.dataTask(with: url, completionHandler: {
+        data, response, error in
+        
+        var success = false
+        
+        if let error = error as? NSError, error.code == -999 {
+          return // Search was cancelled
+        }
+        
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
+        let jsonData = data,
+          let jsonDictionary = self.parse(json: jsonData) {
+          
+          self.locateResults = self.parse(dictionary: jsonDictionary)
+          self.locateResults.sort(by: <)
+          
+          print("***Success!")
+          self.isLoading = false
+          success = true
+        }
+        
+        if !success {
+          self.hasLocated = false
+          self.isLoading = false
+        }
+        
+        DispatchQueue.main.async {
+          completion(success)
+        }
+      })
+      dataTask?.resume()
+    }
+  }
+
+
 }

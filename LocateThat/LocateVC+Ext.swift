@@ -8,49 +8,19 @@
 
 import UIKit
 
-
-
 extension LocateVC: UISearchBarDelegate {
   func performSearch() {
-    if !searchBar.text!.isEmpty {
-      searchBar.resignFirstResponder()
-      
-      dataTask?.cancel()
-      isLoading = true
-      tableView.reloadData()
-      
-      hasLocated = true
-      locateResults = []
-      
-      let url = self.iTunesURL(locateText: searchBar.text!, category: segmentedControl.selectedSegmentIndex)
-      let session = URLSession.shared
-      dataTask = session.dataTask(with: url, completionHandler: { data, response, error in
-        if let error = error as? NSError, error.code == -999 {
-          return  // Search was cancelled
-        } else if let httpResponse = response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 {
-          if let data = data, let jsonDictionary = self.parse(json: data) {
-            self.locateResults = self.parse(dictionary: jsonDictionary)
-            self.locateResults.sort(by: <)
-            
-            DispatchQueue.main.async {
-              self.isLoading = false
-              self.tableView.reloadData()
-            }
-            return
-          }
-        } else {
-          print("***Failure! \(response)")
-        }
-        DispatchQueue.main.async {
-          self.hasLocated = false
-          self.isLoading = false
-          self.tableView.reloadData()
-          self.showNetworkError()
-        }
-      })
-      dataTask?.resume()    // optional chaining
-    }
+    locate.performSearch(for: searchBar.text!,
+                         category: segmentedControl.selectedSegmentIndex,
+                         completion: { success in
+      if !success {
+        self.showNetworkError()
+      }
+      self.tableView.reloadData()
+    })
+    
+    tableView.reloadData()
+    searchBar.resignFirstResponder()
   }
   
   func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -60,37 +30,35 @@ extension LocateVC: UISearchBarDelegate {
 
 extension LocateVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if isLoading {
+    if locate.isLoading {
       return 1
-    } else if !hasLocated {
+    } else if !locate.hasLocated {
       return 0
-    } else if locateResults.count == 0 {
+    } else if locate.locateResults.count == 0 {
       return 1
     } else {
-      return locateResults.count
+      return locate.locateResults.count
     }
   }
-  
-  
 }
 
 extension LocateVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if isLoading {
+    if locate.isLoading {
       let cell = tableView.dequeueReusableCell(withIdentifier:
         TableViewCellIdentifiers.loadingCell, for: indexPath)
       
       let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
       spinner.startAnimating()
       return cell
-    } else if locateResults.count == 0 {
+    } else if locate.locateResults.count == 0 {
       return tableView.dequeueReusableCell(withIdentifier:
         TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
     } else {
       let cell = tableView.dequeueReusableCell(withIdentifier:
         TableViewCellIdentifiers.locateResultCell, for: indexPath) as! LocateResultCell
       
-      let locateResult = locateResults[indexPath.row]
+      let locateResult = locate.locateResults[indexPath.row]
       cell.configure(for: locateResult)
       return cell
     }
@@ -102,7 +70,7 @@ extension LocateVC: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    if locateResults.count == 0 || isLoading {
+    if locate.locateResults.count == 0 || locate.isLoading {
       return nil
     } else {
       return indexPath

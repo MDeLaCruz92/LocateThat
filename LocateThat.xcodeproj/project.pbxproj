@@ -136,7 +136,6 @@
 				824AF74E1E33163500BCB925 /* Model */,
 				824AF74D1E33163000BCB925 /* View */,
 				824AF74C1E33162A00BCB925 /* Controller */,
-				824AF7531E33242500BCB925 /* Extension */,
 				824AF74F1E33163B00BCB925 /* Util */,
 				824AF7501E33164200BCB925 /* Resources */,
 			);
@@ -167,6 +166,7 @@
 				824AF71D1E33157300BCB925 /* LocateVC.swift */,
 				82F919481E410B80008F1695 /* DetailVC.swift */,
 				824656151E55493C000F8A81 /* LandscapeVC.swift */,
+				824AF7531E33242500BCB925 /* Extension */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -190,6 +190,7 @@
 			children = (
 				824AF7561E334B6400BCB925 /* LocateResult.swift */,
 				8246561B1E65E428000F8A81 /* Locate.swift */,
+				82FBBDB21E40F2A900A3F750 /* UIImageView+DownloadImage.swift */,
 				824AF7521E33168700BCB925 /* CoreData */,
 			);
 			name = Model;
@@ -236,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				824AF7541E33248400BCB925 /* LocateVC+Ext.swift */,
-				82FBBDB21E40F2A900A3F750 /* UIImageView+DownloadImage.swift */,
 				82F9194C1E41160A008F1695 /* DetailVC+Ext.swift */,
 				824656191E638912000F8A81 /* LandscapeVC+Ext.swift */,
 			);
