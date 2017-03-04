@@ -7,25 +7,41 @@
 //
 
 import Foundation
+import UIKit
 
 class Locate {
-  var locateResults: [LocateResult] = []
-  var hasLocated = false
-  var isLoading = false
   
   private var dataTask: URLSessionDataTask? = nil
+  private(set) var state: State = .notLocatedYet
   
   typealias LocateComplete = (Bool) -> Void
   
-  //MARK: Parse Functions
-  private func iTunesURL(locateText: String, category: Int) -> URL {
-    let entityName: String
-    switch category {
-    case 1: entityName = "musicTrack"
-    case 2: entityName = "software"
-    case 3: entityName = "ebook"
-    default: entityName = ""
+  enum State {
+    case notLocatedYet
+    case loading
+    case noResults
+    case results([LocateResult])
+  }
+  
+  enum Category: Int {
+    case all = 0
+    case music = 1
+    case software = 2
+    case ebooks = 3
+    
+    var entityName: String {
+      switch self {
+      case .all: return ""
+      case .music: return "musicTrack"
+      case .software: return "software"
+      case .ebooks: return "ebook"
+      }
     }
+  }
+  
+  //MARK: Parse Functions
+  private func iTunesURL(locateText: String, category: Category) -> URL {
+    let entityName = category.entityName
     let escapedLocateText = locateText.addingPercentEncoding(
       withAllowedCharacters: CharacterSet.urlQueryAllowed)!
     let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedLocateText, entityName)
@@ -154,13 +170,13 @@ class Locate {
     return locateResult
   }
   // MARK: Search method
-  func performSearch(for text: String, category: Int, completion: @escaping LocateComplete) {
+  func performSearch(for text: String, category: Category,
+                     completion: @escaping LocateComplete) {
     if !text.isEmpty {
       dataTask?.cancel()
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
       
-      isLoading = true
-      hasLocated = true
-      locateResults = []
+      state = .loading
       
       let url = iTunesURL(locateText: text, category: category)
       
@@ -168,30 +184,30 @@ class Locate {
       dataTask = session.dataTask(with: url, completionHandler: {
         data, response, error in
         
+        self.state = .notLocatedYet
         var success = false
         
         if let error = error as? NSError, error.code == -999 {
           return // Search was cancelled
         }
         
-        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
-        let jsonData = data,
+        if let httpResponse = response as? HTTPURLResponse,
+          httpResponse.statusCode == 200,
+          let jsonData = data,
           let jsonDictionary = self.parse(json: jsonData) {
           
-          self.locateResults = self.parse(dictionary: jsonDictionary)
-          self.locateResults.sort(by: <)
-          
-          print("***Success!")
-          self.isLoading = false
+          var locateResults = self.parse(dictionary: jsonDictionary)
+          if locateResults.isEmpty {
+            self.state = .noResults
+          } else {
+            locateResults.sort(by: <)
+            self.state = .results(locateResults)
+          }
           success = true
         }
         
-        if !success {
-          self.hasLocated = false
-          self.isLoading = false
-        }
-        
         DispatchQueue.main.async {
+          UIApplication.shared.isNetworkActivityIndicatorVisible = false
           completion(success)
         }
       })

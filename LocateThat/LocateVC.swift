@@ -94,6 +94,9 @@ class LocateVC: UIViewController {
       
       coordinator.animate(alongsideTransition: { _ in
         controller.view.alpha = 0
+        if self.presentedViewController != nil {
+          self.dismiss(animated: true, completion: nil)
+        }
       }, completion: { _ in
       controller.view.removeFromSuperview()
       controller.removeFromParentViewController()
@@ -116,10 +119,14 @@ class LocateVC: UIViewController {
   // MARK: Segue
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "ShowDetail" {
+      if case .results(let list) = locate.state {
       let detailVC = segue.destination as! DetailVC
+        
       let indexPath = sender as! IndexPath
-      let locateResult = locate.locateResults[indexPath.row]
+      let locateResult = list[indexPath.row]
       detailVC.locateResult = locateResult
+      }
     }
   }
+
 }
