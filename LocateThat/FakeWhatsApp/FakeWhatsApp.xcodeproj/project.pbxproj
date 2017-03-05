@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8246563C1E6BDFB4000F8A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246563B1E6BDFB4000F8A81 /* AppDelegate.swift */; };
+		8246563E1E6BDFB4000F8A81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246563D1E6BDFB4000F8A81 /* ViewController.swift */; };
+		824656411E6BDFB4000F8A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8246563F1E6BDFB4000F8A81 /* Main.storyboard */; };
+		824656441E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 824656421E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodeld */; };
+		824656461E6BDFB4000F8A81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 824656451E6BDFB4000F8A81 /* Assets.xcassets */; };
+		824656491E6BDFB4000F8A81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824656471E6BDFB4000F8A81 /* LaunchScreen.storyboard */; };
+		824656541E6BDFB4000F8A81 /* FakeWhatsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824656531E6BDFB4000F8A81 /* FakeWhatsAppTests.swift */; };
+		8246565F1E6BDFB4000F8A81 /* FakeWhatsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246565E1E6BDFB4000F8A81 /* FakeWhatsAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		824656501E6BDFB4000F8A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 824656301E6BDFB3000F8A81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 824656371E6BDFB4000F8A81;
+			remoteInfo = FakeWhatsApp;
+		};
+		8246565B1E6BDFB4000F8A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 824656301E6BDFB3000F8A81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 824656371E6BDFB4000F8A81;
+			remoteInfo = FakeWhatsApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		824656381E6BDFB4000F8A81 /* FakeWhatsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FakeWhatsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8246563B1E6BDFB4000F8A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8246563D1E6BDFB4000F8A81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		824656401E6BDFB4000F8A81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		824656431E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FakeWhatsApp.xcdatamodel; sourceTree = "<group>"; };
+		824656451E6BDFB4000F8A81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		824656481E6BDFB4000F8A81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8246564A1E6BDFB4000F8A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8246564F1E6BDFB4000F8A81 /* FakeWhatsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FakeWhatsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		824656531E6BDFB4000F8A81 /* FakeWhatsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWhatsAppTests.swift; sourceTree = "<group>"; };
+		824656551E6BDFB4000F8A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8246565A1E6BDFB4000F8A81 /* FakeWhatsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FakeWhatsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8246565E1E6BDFB4000F8A81 /* FakeWhatsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWhatsAppUITests.swift; sourceTree = "<group>"; };
+		824656601E6BDFB4000F8A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		824656351E6BDFB4000F8A81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8246564C1E6BDFB4000F8A81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		824656571E6BDFB4000F8A81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8246562F1E6BDFB3000F8A81 = {
+			isa = PBXGroup;
+			children = (
+				8246563A1E6BDFB4000F8A81 /* FakeWhatsApp */,
+				824656521E6BDFB4000F8A81 /* FakeWhatsAppTests */,
+				8246565D1E6BDFB4000F8A81 /* FakeWhatsAppUITests */,
+				824656391E6BDFB4000F8A81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		824656391E6BDFB4000F8A81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				824656381E6BDFB4000F8A81 /* FakeWhatsApp.app */,
+				8246564F1E6BDFB4000F8A81 /* FakeWhatsAppTests.xctest */,
+				8246565A1E6BDFB4000F8A81 /* FakeWhatsAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8246563A1E6BDFB4000F8A81 /* FakeWhatsApp */ = {
+			isa = PBXGroup;
+			children = (
+				8246563B1E6BDFB4000F8A81 /* AppDelegate.swift */,
+				8246563D1E6BDFB4000F8A81 /* ViewController.swift */,
+				8246563F1E6BDFB4000F8A81 /* Main.storyboard */,
+				824656451E6BDFB4000F8A81 /* Assets.xcassets */,
+				824656471E6BDFB4000F8A81 /* LaunchScreen.storyboard */,
+				8246564A1E6BDFB4000F8A81 /* Info.plist */,
+				824656421E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodeld */,
+			);
+			path = FakeWhatsApp;
+			sourceTree = "<group>";
+		};
+		824656521E6BDFB4000F8A81 /* FakeWhatsAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				824656531E6BDFB4000F8A81 /* FakeWhatsAppTests.swift */,
+				824656551E6BDFB4000F8A81 /* Info.plist */,
+			);
+			path = FakeWhatsAppTests;
+			sourceTree = "<group>";
+		};
+		8246565D1E6BDFB4000F8A81 /* FakeWhatsAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8246565E1E6BDFB4000F8A81 /* FakeWhatsAppUITests.swift */,
+				824656601E6BDFB4000F8A81 /* Info.plist */,
+			);
+			path = FakeWhatsAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		824656371E6BDFB4000F8A81 /* FakeWhatsApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 824656631E6BDFB4000F8A81 /* Build configuration list for PBXNativeTarget "FakeWhatsApp" */;
+			buildPhases = (
+				824656341E6BDFB4000F8A81 /* Sources */,
+				824656351E6BDFB4000F8A81 /* Frameworks */,
+				824656361E6BDFB4000F8A81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FakeWhatsApp;
+			productName = FakeWhatsApp;
+			productReference = 824656381E6BDFB4000F8A81 /* FakeWhatsApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8246564E1E6BDFB4000F8A81 /* FakeWhatsAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 824656661E6BDFB4000F8A81 /* Build configuration list for PBXNativeTarget "FakeWhatsAppTests" */;
+			buildPhases = (
+				8246564B1E6BDFB4000F8A81 /* Sources */,
+				8246564C1E6BDFB4000F8A81 /* Frameworks */,
+				8246564D1E6BDFB4000F8A81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				824656511E6BDFB4000F8A81 /* PBXTargetDependency */,
+			);
+			name = FakeWhatsAppTests;
+			productName = FakeWhatsAppTests;
+			productReference = 8246564F1E6BDFB4000F8A81 /* FakeWhatsAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		824656591E6BDFB4000F8A81 /* FakeWhatsAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 824656691E6BDFB4000F8A81 /* Build configuration list for PBXNativeTarget "FakeWhatsAppUITests" */;
+			buildPhases = (
+				824656561E6BDFB4000F8A81 /* Sources */,
+				824656571E6BDFB4000F8A81 /* Frameworks */,
+				824656581E6BDFB4000F8A81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8246565C1E6BDFB4000F8A81 /* PBXTargetDependency */,
+			);
+			name = FakeWhatsAppUITests;
+			productName = FakeWhatsAppUITests;
+			productReference = 8246565A1E6BDFB4000F8A81 /* FakeWhatsAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		824656301E6BDFB3000F8A81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Michael De La Cruz";
+				TargetAttributes = {
+					824656371E6BDFB4000F8A81 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UP5S927B5L;
+						ProvisioningStyle = Automatic;
+					};
+					8246564E1E6BDFB4000F8A81 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UP5S927B5L;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 824656371E6BDFB4000F8A81;
+					};
+					824656591E6BDFB4000F8A81 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UP5S927B5L;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 824656371E6BDFB4000F8A81;
+					};
+				};
+			};
+			buildConfigurationList = 824656331E6BDFB3000F8A81 /* Build configuration list for PBXProject "FakeWhatsApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8246562F1E6BDFB3000F8A81;
+			productRefGroup = 824656391E6BDFB4000F8A81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				824656371E6BDFB4000F8A81 /* FakeWhatsApp */,
+				8246564E1E6BDFB4000F8A81 /* FakeWhatsAppTests */,
+				824656591E6BDFB4000F8A81 /* FakeWhatsAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		824656361E6BDFB4000F8A81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824656491E6BDFB4000F8A81 /* LaunchScreen.storyboard in Resources */,
+				824656461E6BDFB4000F8A81 /* Assets.xcassets in Resources */,
+				824656411E6BDFB4000F8A81 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8246564D1E6BDFB4000F8A81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		824656581E6BDFB4000F8A81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		824656341E6BDFB4000F8A81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824656441E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodeld in Sources */,
+				8246563E1E6BDFB4000F8A81 /* ViewController.swift in Sources */,
+				8246563C1E6BDFB4000F8A81 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8246564B1E6BDFB4000F8A81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824656541E6BDFB4000F8A81 /* FakeWhatsAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		824656561E6BDFB4000F8A81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8246565F1E6BDFB4000F8A81 /* FakeWhatsAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		824656511E6BDFB4000F8A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 824656371E6BDFB4000F8A81 /* FakeWhatsApp */;
+			targetProxy = 824656501E6BDFB4000F8A81 /* PBXContainerItemProxy */;
+		};
+		8246565C1E6BDFB4000F8A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 824656371E6BDFB4000F8A81 /* FakeWhatsApp */;
+			targetProxy = 8246565B1E6BDFB4000F8A81 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8246563F1E6BDFB4000F8A81 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				824656401E6BDFB4000F8A81 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		824656471E6BDFB4000F8A81 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				824656481E6BDFB4000F8A81 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		824656611E6BDFB4000F8A81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		824656621E6BDFB4000F8A81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		824656641E6BDFB4000F8A81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UP5S927B5L;
+				INFOPLIST_FILE = FakeWhatsApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MichaelD.FakeWhatsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		824656651E6BDFB4000F8A81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UP5S927B5L;
+				INFOPLIST_FILE = FakeWhatsApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MichaelD.FakeWhatsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		824656671E6BDFB4000F8A81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UP5S927B5L;
+				INFOPLIST_FILE = FakeWhatsAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MichaelD.FakeWhatsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FakeWhatsApp.app/FakeWhatsApp";
+			};
+			name = Debug;
+		};
+		824656681E6BDFB4000F8A81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UP5S927B5L;
+				INFOPLIST_FILE = FakeWhatsAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MichaelD.FakeWhatsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FakeWhatsApp.app/FakeWhatsApp";
+			};
+			name = Release;
+		};
+		8246566A1E6BDFB4000F8A81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UP5S927B5L;
+				INFOPLIST_FILE = FakeWhatsAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MichaelD.FakeWhatsAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FakeWhatsApp;
+			};
+			name = Debug;
+		};
+		8246566B1E6BDFB4000F8A81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UP5S927B5L;
+				INFOPLIST_FILE = FakeWhatsAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MichaelD.FakeWhatsAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FakeWhatsApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		824656331E6BDFB3000F8A81 /* Build configuration list for PBXProject "FakeWhatsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				824656611E6BDFB4000F8A81 /* Debug */,
+				824656621E6BDFB4000F8A81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		824656631E6BDFB4000F8A81 /* Build configuration list for PBXNativeTarget "FakeWhatsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				824656641E6BDFB4000F8A81 /* Debug */,
+				824656651E6BDFB4000F8A81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		824656661E6BDFB4000F8A81 /* Build configuration list for PBXNativeTarget "FakeWhatsAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				824656671E6BDFB4000F8A81 /* Debug */,
+				824656681E6BDFB4000F8A81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		824656691E6BDFB4000F8A81 /* Build configuration list for PBXNativeTarget "FakeWhatsAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8246566A1E6BDFB4000F8A81 /* Debug */,
+				8246566B1E6BDFB4000F8A81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		824656421E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				824656431E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodel */,
+			);
+			currentVersion = 824656431E6BDFB4000F8A81 /* FakeWhatsApp.xcdatamodel */;
+			path = FakeWhatsApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 824656301E6BDFB3000F8A81 /* Project object */;
+}
